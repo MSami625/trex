@@ -11,6 +11,7 @@ var obstaclesGroup, obstacle1, obstacle2, obstacle3, obstacle4, obstacle5, obsta
 var score;
 var gameOverImg,restartImg;
 var jumpSound , checkPointSound, dieSound;
+var bg;
 
 function preload(){
   trex_running = loadAnimation("trex1.png","trex3.png","trex4.png");
@@ -26,6 +27,7 @@ function preload(){
   obstacle4 = loadImage("obstacle4.png");
   obstacle5 = loadImage("obstacle5.png");
   obstacle6 = loadImage("obstacle6.png");
+  bg=loadImage("backgroundtrex.jpg");
   
   restartImg = loadImage("restart.png")
   gameOverImg = loadImage("gameOver.png")
@@ -79,8 +81,9 @@ function setup() {
 
 function draw() {
   
-  background("lightyellow");
+  background(bg);
   //displaying score
+  fill("green");
   text("Score: "+ score, 500,50);
   
   
@@ -93,7 +96,7 @@ function draw() {
     //scoring
     score = score + Math.round(getFrameRate()/60);
     camera.position.x=trex.x;
-    camera.position.y=displayHeight/2;
+    camera.position.y=displayHeight/3;
     
     if(score>0 && score%100 === 0){
        checkPointSound.play() 
